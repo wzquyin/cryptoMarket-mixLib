@@ -1,4 +1,4 @@
-import { pair_interface, market, authHandle } from "../market";
+import { pair_interface, market, authHandle, marketWs } from "../market";
 import * as request from "request-promise-native";
 import * as querystring from "querystring";
 import * as crypto from "crypto";
@@ -24,8 +24,8 @@ export class gateIO extends market {
     getAuthHandle(appId: string, key: string): gateIO_authHandle {
         return new gateIO_authHandle(appId, key);
     }
-    subscribeTrade(pair: pair_interface) {
-
+    getWsHandle(): marketWs {
+        return new gateIOWs();
     }
 
     protected async Get(path: string) {
@@ -87,5 +87,10 @@ export class gateIO_authHandle extends authHandle {
     async getBlance(): Promise<{ [name: string]: number }> {
         let data = await this.Post("/api2/1/private/balances", {});
         return JSON.parse(data).available;
+    }
+}
+export class gateIOWs extends marketWs {
+    constructor() {
+        super();
     }
 }
