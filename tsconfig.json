@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "outDir": "app",
+        "allowJs": true,
+        "target": "es6",
+        "noImplicitAny": false,
+        "module": "commonjs",
+        "removeComments": true,
+        "sourceMap": true,
+        "declaration": false,
+        "experimentalDecorators": true,
+    },
+    "exclude": [
+        "node_modules",
+        "app",
+        "*.d.ts"
+    ],
+    "include": [
+        "src/**/*"
+    ]
+}
